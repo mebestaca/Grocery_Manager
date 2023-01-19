@@ -29,11 +29,11 @@ class _AddMoreItemsState extends State<AddMoreItems> {
   Widget build(BuildContext context) {
 
     return Scaffold(
-      body: SingleChildScrollView(
-        scrollDirection: Axis.vertical,
-        child: Column(
-          children: [
-            Form(
+      body: Column(
+        children: [
+          Container(
+            color: Theme.of(context).canvasColor,
+            child: Form(
               key: _globalKey,
               child: Padding(
                 padding: const EdgeInsets.all(10.0),
@@ -60,7 +60,9 @@ class _AddMoreItemsState extends State<AddMoreItems> {
                 ),
               ),
             ),
-            StreamBuilder<QuerySnapshot<ItemModel>>(
+          ),
+          Flexible(
+            child: StreamBuilder<QuerySnapshot<ItemModel>>(
                 stream: DatabaseService(path: Paths.items).getItemModelReference().
                 queryBy(ItemQueryModes.itemName, queryText: _itemName).snapshots(),
                 builder: (context, itemList) {
@@ -97,8 +99,8 @@ class _AddMoreItemsState extends State<AddMoreItems> {
                     return Container();
                   }
                 }),
-          ],
-        ),
+          ),
+        ],
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {

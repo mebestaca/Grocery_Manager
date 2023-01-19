@@ -24,11 +24,11 @@ class _RemoveItemState extends State<RemoveItem> {
   @override
   Widget build(BuildContext context) {
 
-    return SingleChildScrollView(
-      scrollDirection: Axis.vertical,
-      child: Column(
-        children: [
-          Form(
+    return Column(
+      children: [
+        Container(
+          color: Theme.of(context).canvasColor,
+          child: Form(
             key: _globalKey,
             child: Padding(
               padding: const EdgeInsets.all(10.0),
@@ -55,44 +55,47 @@ class _RemoveItemState extends State<RemoveItem> {
               ),
             ),
           ),
-          StreamBuilder<QuerySnapshot<ItemModel>>(
-              stream: DatabaseService(path: Paths.items).getItemModelReference().
-              queryBy(ItemQueryModes.itemName, queryText: _itemName).snapshots(),
-              builder: (context, itemList) {
-                if (itemList.hasData) {
+        ),
+        Flexible(
+          child: StreamBuilder<QuerySnapshot<ItemModel>>(
+            stream: DatabaseService(path: Paths.items).getItemModelReference().
+            queryBy(ItemQueryModes.itemName, queryText: _itemName).snapshots(),
+            builder: (context, itemList) {
+              if (itemList.hasData) {
 
-                  final data = itemList.requireData;
+                final data = itemList.requireData;
 
-                  if (data.size > 0) {
-                    return ListView.builder(
-                        scrollDirection: Axis.vertical,
-                        shrinkWrap: true,
-                        itemCount: data.size,
-                        itemBuilder: (context, index) {
-                          return MaintenanceListTile(
-                            itemModel: ItemModel(
-                                name: data.docs[index][ItemModel.fieldName],
-                                amount: data.docs[index][ItemModel.fieldAmount],
-                                threshold: data.docs[index][ItemModel.fieldThreshold],
-                                uom: data.docs[index][ItemModel.fieldUOM]
-                            ),
-                            id: data.docs[index].id,
-                          );
-                        }
-                    );
-                  }
-                  else{
-                    return const Center(
-                      child: Text("No Items Found"),
-                    );
-                  }
+                if (data.size > 0) {
+                  return ListView.builder(
+                      physics: const BouncingScrollPhysics(),
+                      scrollDirection: Axis.vertical,
+                      shrinkWrap: true,
+                      itemCount: data.size,
+                      itemBuilder: (context, index) {
+                        return MaintenanceListTile(
+                          itemModel: ItemModel(
+                              name: data.docs[index][ItemModel.fieldName],
+                              amount: data.docs[index][ItemModel.fieldAmount],
+                              threshold: data.docs[index][ItemModel.fieldThreshold],
+                              uom: data.docs[index][ItemModel.fieldUOM]
+                          ),
+                          id: data.docs[index].id,
+                        );
+                      }
+                  );
                 }
                 else{
-                  return Container();
+                  return const Center(
+                    child: Text("No Items Found"),
+                  );
                 }
-              }),
-        ],
-      ),
+              }
+              else{
+                return Container();
+              }
+            }),
+        ),
+      ],
     );
   }
 }

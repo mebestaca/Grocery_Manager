@@ -25,11 +25,11 @@ class _LowItemsState extends State<LowItems> {
   @override
   Widget build(BuildContext context) {
 
-    return SingleChildScrollView(
-      scrollDirection: Axis.vertical,
-      child: Column(
-        children: [
-          Form(
+    return Column(
+      children: [
+        Container(
+          color: Theme.of(context).canvasColor,
+          child: Form(
             key: _globalKey,
             child: Padding(
               padding: const EdgeInsets.all(10.0),
@@ -56,7 +56,9 @@ class _LowItemsState extends State<LowItems> {
               ),
             ),
           ),
-          StreamBuilder<QuerySnapshot<ItemModel>>(
+        ),
+        Flexible(
+          child: StreamBuilder<QuerySnapshot<ItemModel>>(
               stream: DatabaseService(path: Paths.items).getItemModelReference().
               queryBy(ItemQueryModes.low, queryText: _itemName).snapshots(),
               builder: (context, itemList) {
@@ -66,6 +68,7 @@ class _LowItemsState extends State<LowItems> {
 
                   if (data.size > 0) {
                     return ListView.builder(
+                        physics: const BouncingScrollPhysics(),
                         scrollDirection: Axis.vertical,
                         shrinkWrap: true,
                         itemCount: data.size,
@@ -92,8 +95,8 @@ class _LowItemsState extends State<LowItems> {
                   return Container();
                 }
               }),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }
