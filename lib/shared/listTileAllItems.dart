@@ -50,48 +50,51 @@ class _AllItemListTileState extends State<AllItemListTile> {
             ),
           ],
         ),
-        child: ListTile(
-          tileColor: Theme.of(context).primaryColor,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(5),
-          ),
-          title: Text(widget.itemModel.name,
-            style: TextStyle(
-                color: Theme.of(context).canvasColor
+        child: Container(
+          color: Theme.of(context).primaryColor,
+          child: ListTile(
+            tileColor: Theme.of(context).primaryColor,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(5),
             ),
-          ),
-          trailing: IconButton(
-            onPressed: () async {
-
-              Map<String, dynamic> data = {
-                ItemModel.fieldAmount : widget.itemModel.amount + 1,
-                ItemModel.fieldTag : ItemModel.getTag(amount: widget.itemModel.amount + 1, threshold: widget.itemModel.threshold)
-              };
-
-              await DatabaseService(path: Paths.items).updateEntry(data, widget.id);
-            },
-            icon: Icon(Icons.add,
-              color: Theme.of(context).canvasColor,
+            title: Text(widget.itemModel.name,
+              style: TextStyle(
+                  color: Theme.of(context).canvasColor
+              ),
             ),
-          ),
-          leading: IconButton(
+            trailing: IconButton(
               onPressed: () async {
-                if (widget.itemModel.amount > 0) {
-                  Map<String, dynamic> data = {
-                    ItemModel.fieldAmount : widget.itemModel.amount - 1,
-                    ItemModel.fieldTag : ItemModel.getTag(amount: widget.itemModel.amount - 1, threshold: widget.itemModel.threshold)
-                  };
-                  await DatabaseService(path: Paths.items).updateEntry(data, widget.id);
-                }
+
+                Map<String, dynamic> data = {
+                  ItemModel.fieldAmount : widget.itemModel.amount + 1,
+                  ItemModel.fieldTag : ItemModel.getTag(amount: widget.itemModel.amount + 1, threshold: widget.itemModel.threshold)
+                };
+
+                await DatabaseService(path: Paths.items).updateEntry(data, widget.id);
               },
-              icon: Icon(Icons.remove,
+              icon: Icon(Icons.add,
                 color: Theme.of(context).canvasColor,
-              )
-          ),
-          subtitle: Text("Remaining: ${widget.itemModel.amount.toString()} ${widget.itemModel.uom}/Threshold: ${widget.itemModel.threshold.toString()} ${widget.itemModel.uom}",
-            textAlign: TextAlign.end,
-            style: TextStyle(
-                color: Theme.of(context).canvasColor
+              ),
+            ),
+            leading: IconButton(
+                onPressed: () async {
+                  if (widget.itemModel.amount > 0) {
+                    Map<String, dynamic> data = {
+                      ItemModel.fieldAmount : widget.itemModel.amount - 1,
+                      ItemModel.fieldTag : ItemModel.getTag(amount: widget.itemModel.amount - 1, threshold: widget.itemModel.threshold)
+                    };
+                    await DatabaseService(path: Paths.items).updateEntry(data, widget.id);
+                  }
+                },
+                icon: Icon(Icons.remove,
+                  color: Theme.of(context).canvasColor,
+                )
+            ),
+            subtitle: Text("Remaining: ${widget.itemModel.amount.toString()} ${widget.itemModel.uom}/Threshold: ${widget.itemModel.threshold.toString()} ${widget.itemModel.uom}",
+              textAlign: TextAlign.end,
+              style: TextStyle(
+                  color: Theme.of(context).canvasColor
+              ),
             ),
           ),
         ),

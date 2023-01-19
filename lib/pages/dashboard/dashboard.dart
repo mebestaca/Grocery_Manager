@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:grocery_manager/pages/dashboard/items/items.dart';
 import 'package:grocery_manager/pages/dashboard/lowitems/shoppingList.dart';
 import 'package:grocery_manager/pages/dashboard/maintenance/maintenance.dart';
-import 'package:grocery_manager/pages/dashboard/movement/movement.dart';
 import 'package:grocery_manager/services/authentication.dart';
 
 class Dashboard extends StatefulWidget {
@@ -53,7 +52,7 @@ class _DashboardState extends State<Dashboard> {
                 decoration: BoxDecoration(
                     color: Theme.of(context).primaryColor
                 ),
-                child: Text("Grocery Observer",
+                child: Text("Grocery Manager",
                   style: TextStyle(
                       fontSize: 30.0,
                       color: Theme.of(context).canvasColor
@@ -84,19 +83,19 @@ class _DashboardState extends State<Dashboard> {
                 Navigator.pop(context);
               },
             ),
-            /*
-            ListTile(
-              title: const Text("Movement"),
-              onTap: () {
-                updatePage(3);
-                Navigator.pop(context);
-              },
-            ),
-            */
           ],
         ),
       ),
-      body: _widgetList[_currentIndex],
+      body: Container(
+        decoration: const BoxDecoration(
+            image: DecorationImage(
+                image: AssetImage("assets/grocery_manager_wallpaper.jpg"),
+                fit: BoxFit.fitHeight,
+                alignment: Alignment.center
+            )
+        ),
+        child:_widgetList[_currentIndex],
+      )
     );
   }
 

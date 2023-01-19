@@ -5,7 +5,6 @@ import 'package:grocery_manager/pages/dashboard/dashboard.dart';
 import 'package:grocery_manager/pages/dashboard/items/items.dart';
 import 'package:grocery_manager/pages/dashboard/lowitems/lowitems.dart';
 import 'package:grocery_manager/pages/dashboard/maintenance/maintenance.dart';
-import 'package:grocery_manager/pages/dashboard/movement/movement.dart';
 import 'package:grocery_manager/services/authentication.dart';
 import 'package:grocery_manager/shared/sharedScaffold.dart';
 import 'package:grocery_manager/shared/sharedThemes.dart';
@@ -53,7 +52,6 @@ class _MyHomePageState extends State<MyHomePage> {
         routes: {
           Routes.lowItems : (context) => const LowItems(),
           Routes.dashboard : (context) => const Dashboard(),
-          Routes.movement : (context) => const Movement(),
           Routes.maintenance : (context) => const Maintenance(),
           Routes.allItems : (context) => const Items(),
           Routes.sharedScaffold : (context) => const SharedScaffold()

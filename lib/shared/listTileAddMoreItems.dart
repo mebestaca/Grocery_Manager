@@ -50,33 +50,36 @@ class _AddMoreItemListTileState extends State<AddMoreItemListTile> {
             ),
           ],
         ),
-        child: ListTile(
-          tileColor: Theme.of(context).primaryColor,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(5),
-          ),
-          title: Text(widget.itemModel.name,
-            style: TextStyle(
-                color: Theme.of(context).canvasColor
+        child: Container(
+          color: Theme.of(context).primaryColor,
+          child: ListTile(
+            tileColor: Theme.of(context).primaryColor,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(5),
             ),
-          ),
-
-          trailing: IconButton(
-            onPressed: () async {
-              Map<String, dynamic> data = {
-                ItemModel.fieldTag : widget.itemModel.tag == ItemModel.tagLow ? "" : ItemModel.tagLow
-              };
-
-              await DatabaseService(path: Paths.items).updateEntry(data, widget.id);
-            },
-            icon: Icon(widget.itemModel.tag == ItemModel.tagLow ? Icons.cancel_outlined : Icons.add_circle_outline,
-              color: Theme.of(context).canvasColor,
+            title: Text(widget.itemModel.name,
+              style: TextStyle(
+                  color: Theme.of(context).canvasColor
+              ),
             ),
-          ),
-          subtitle: Text("Remaining: ${widget.itemModel.amount.toString()} ${widget.itemModel.uom}/Threshold: ${widget.itemModel.threshold.toString()} ${widget.itemModel.uom}",
-            textAlign: TextAlign.end,
-            style: TextStyle(
-                color: Theme.of(context).canvasColor
+
+            trailing: IconButton(
+              onPressed: () async {
+                Map<String, dynamic> data = {
+                  ItemModel.fieldTag : widget.itemModel.tag == ItemModel.tagLow ? "" : ItemModel.tagLow
+                };
+
+                await DatabaseService(path: Paths.items).updateEntry(data, widget.id);
+              },
+              icon: Icon(widget.itemModel.tag == ItemModel.tagLow ? Icons.cancel_outlined : Icons.add_circle_outline,
+                color: Theme.of(context).canvasColor,
+              ),
+            ),
+            subtitle: Text("Remaining: ${widget.itemModel.amount.toString()} ${widget.itemModel.uom}/Threshold: ${widget.itemModel.threshold.toString()} ${widget.itemModel.uom}",
+              textAlign: TextAlign.end,
+              style: TextStyle(
+                  color: Theme.of(context).canvasColor
+              ),
             ),
           ),
         ),

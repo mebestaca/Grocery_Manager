@@ -22,7 +22,17 @@ class _ShoppingListState extends State<ShoppingList> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: _pageList[_selectedIndex],
+      body:
+        Container(
+          decoration: const BoxDecoration(
+              image: DecorationImage(
+                  image: AssetImage("assets/grocery_manager_wallpaper.jpg"),
+                  fit: BoxFit.fitHeight,
+                  alignment: Alignment.center
+              )
+          ),
+          child: _pageList[_selectedIndex],
+        ),
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _selectedIndex,
         onTap: (int index) {
