@@ -9,6 +9,7 @@ import '../../../constants/routes.dart';
 import '../../../models/item.dart';
 import '../../../services/database.dart';
 import '../../../shared/sharedDecoration.dart';
+import '../../../shared/sharedLoading.dart';
 import '../maintenance/registeritem.dart';
 
 class AddMoreItems extends StatefulWidget {
@@ -104,7 +105,7 @@ class _AddMoreItemsState extends State<AddMoreItems> {
                       }
                     }
                     else{
-                      return Container();
+                      return const Center(child: Loading());
                     }
                   }),
             ),
