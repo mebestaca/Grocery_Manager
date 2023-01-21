@@ -19,14 +19,12 @@ class _DashboardState extends State<Dashboard> {
     const ShoppingList(),
     const Items(),
     const Maintenance(),
-    // const Movement()
   ];
 
   final List<String> _widgetTitles = [
     "Shopping List",
     "All Items",
-    "Maintenance",
-    "Movement"
+    "Manage",
   ];
 
 
@@ -67,7 +65,7 @@ class _DashboardState extends State<Dashboard> {
                 )
             ),
             ListTile(
-              title: const Text("Shopping List"),
+              title: Text(_widgetTitles[0]),
               leading: const Icon(Icons.checklist_rounded),
               onTap: () {
                 updatePage(0);
@@ -75,7 +73,7 @@ class _DashboardState extends State<Dashboard> {
               },
             ),
             ListTile(
-              title: const Text("All Items"),
+              title: Text(_widgetTitles[1]),
               leading: const Icon(Icons.category_rounded),
               onTap: () {
                 updatePage(1);
@@ -83,7 +81,7 @@ class _DashboardState extends State<Dashboard> {
               },
             ),
             ListTile(
-              title: const Text("Maintenance"),
+              title: Text(_widgetTitles[2]),
               leading: const Icon(Icons.build_rounded),
               onTap: () {
                 updatePage(2);
