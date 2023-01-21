@@ -49,13 +49,20 @@ class _DashboardState extends State<Dashboard> {
           padding: EdgeInsets.zero,
           children: [
             DrawerHeader(
-                decoration: BoxDecoration(
-                    color: Theme.of(context).primaryColor
+                decoration: const BoxDecoration(
+                    image: DecorationImage(
+                        image: AssetImage("assets/grocery_manager_drawer.jpg"),
+                        fit: BoxFit.fill,
+                        alignment: Alignment.center
+                    )
                 ),
-                child: Text("Grocery Manager",
-                  style: TextStyle(
-                      fontSize: 30.0,
-                      color: Theme.of(context).canvasColor
+                child: Container(
+                  alignment: Alignment.bottomLeft,
+                  child: Text("Grocery Manager",
+                    style: TextStyle(
+                        fontSize: 30.0,
+                        color: Theme.of(context).canvasColor
+                    ),
                   ),
                 )
             ),
