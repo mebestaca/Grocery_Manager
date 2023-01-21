@@ -6,6 +6,7 @@ import 'package:grocery_manager/shared/sharedDecoration.dart';
 import '../../../constants/paths.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import '../../../shared/listTileMaintenance.dart';
+import '../../../shared/sharedLoading.dart';
 
 class RemoveItem extends StatefulWidget {
   const RemoveItem({Key? key}) : super(key: key);
@@ -99,7 +100,7 @@ class _RemoveItemState extends State<RemoveItem> {
                   }
                 }
                 else{
-                  return Container();
+                  return const Center(child: Loading());
                 }
               }),
           ),
