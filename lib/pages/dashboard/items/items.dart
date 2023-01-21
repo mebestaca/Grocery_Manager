@@ -7,6 +7,7 @@ import '../../../models/item.dart';
 import '../../../services/database.dart';
 import '../../../services/extensions.dart';
 import '../../../shared/sharedDecoration.dart';
+import '../../../shared/sharedLoading.dart';
 
 class Items extends StatefulWidget {
   const Items({Key? key}) : super(key: key);
@@ -92,7 +93,7 @@ class _ItemsState extends State<Items> {
                   }
                 }
                 else{
-                  return Container();
+                  return const Center(child: Loading());
                 }
               }),
         ),
