@@ -88,7 +88,11 @@ class _LowItemsState extends State<LowItems> {
                   }
                   else{
                     return const Center(
-                      child: Text("No Items Found"),
+                      child: Text("No Items Found",
+                          style: TextStyle(
+                              color: Colors.white
+                          )
+                      ),
                     );
                   }
                 }

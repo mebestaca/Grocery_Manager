@@ -88,7 +88,11 @@ class _ItemsState extends State<Items> {
                   }
                   else{
                     return const Center(
-                      child: Text("No Items Found"),
+                      child: Text("No Items Found",
+                        style: TextStyle(
+                          color: Colors.white
+                        )
+                      ),
                     );
                   }
                 }

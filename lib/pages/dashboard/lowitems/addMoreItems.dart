@@ -100,7 +100,11 @@ class _AddMoreItemsState extends State<AddMoreItems> {
                       }
                       else{
                         return const Center(
-                          child: Text("No Items Found"),
+                          child: Text("No Items Found",
+                              style: TextStyle(
+                                  color: Colors.white
+                              )
+                          ),
                         );
                       }
                     }
