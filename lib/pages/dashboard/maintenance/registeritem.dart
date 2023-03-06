@@ -48,13 +48,6 @@ class _RegisterItemState extends State<RegisterItem> {
 
     return Container(
       constraints: const BoxConstraints.expand(),
-      decoration: const BoxDecoration(
-          image: DecorationImage(
-              image: AssetImage("assets/grocery_manager_wallpaper.jpg"),
-              fit: BoxFit.fitHeight,
-              alignment: Alignment.center
-          )
-      ),
       child: SingleChildScrollView(
         child: Form(
           key: _formKey,

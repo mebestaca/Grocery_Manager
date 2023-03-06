@@ -24,13 +24,6 @@ class _ShoppingListState extends State<ShoppingList> {
     return Scaffold(
       body:
         Container(
-          decoration: const BoxDecoration(
-              image: DecorationImage(
-                  image: AssetImage("assets/grocery_manager_wallpaper.jpg"),
-                  fit: BoxFit.fitHeight,
-                  alignment: Alignment.center
-              )
-          ),
           child: _pageList[_selectedIndex],
         ),
       bottomNavigationBar: BottomNavigationBar(

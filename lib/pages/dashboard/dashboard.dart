@@ -92,13 +92,6 @@ class _DashboardState extends State<Dashboard> {
         ),
       ),
       body: Container(
-        decoration: const BoxDecoration(
-            image: DecorationImage(
-                image: AssetImage("assets/grocery_manager_wallpaper.jpg"),
-                fit: BoxFit.fitHeight,
-                alignment: Alignment.center
-            )
-        ),
         child:_widgetList[_currentIndex],
       )
     );

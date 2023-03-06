@@ -31,6 +31,7 @@ class _LoginState extends State<Login> {
         Stack(
           children: [
             Container(
+              /*
               decoration: const BoxDecoration(
                   image: DecorationImage(
                       image: AssetImage("assets/grocery_manager_wallpaper.jpg"),
@@ -38,6 +39,7 @@ class _LoginState extends State<Login> {
                       alignment: Alignment.center
                   )
               ),
+              */
               child: Center(
                 child: SafeArea(
                   child: Form(
