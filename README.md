@@ -6,7 +6,7 @@ A Flutter project designed to track inventory in a household to prevent users fr
  [Shopping List] - contains items which are out of stock or low. Will automatically add items which are low based on threshold. Users can add items manually <br>
  [Items] - a list of items, quantity, unit of measure, threshold and buttons to increase/decrease the amount <br>
  [Manage] - used to register, edit, and delete items <br>
- [Authentication] - User Authentication to prevent data loss when using multiple devices
+ [Authentication] - User Authentication to prevent data loss when using multiple devices <br>
  [Search] - All modules with list supports smart search
 
 ## Technology Used
