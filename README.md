@@ -3,12 +3,9 @@
 A Flutter project designed to track inventory in a household to prevent users from buying duplicate items.
 
 ## Features
- - Automatically adds items which are considered low on to the shopping list
- - Can manually add items to the shopping list even if the items arent low
- - Users can add, update or even delete items from the inventory
- - Shopping list is the section where low items are listed and can be removed by replenishing the said items
- - All items is the section where users can add or subtract quantities from the items
- - Manage is the section where users can add items to the app. Only items which are added will appear on the other sections
+ [Shopping List] - contains items which are out of stock or low. Will automatically add items which are low based on threshold. Users can add items manually <br>
+ [Items] - a list of items, quantity, unit of measure, threshold and buttons to increase/decrease the amount <br>
+ [Manage] - used to register, edit, and delete items <br>
 
 ## Technology Used
  - Flutter
