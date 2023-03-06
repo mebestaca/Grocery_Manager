@@ -7,6 +7,7 @@ A Flutter project designed to track inventory in a household to prevent users fr
  [Items] - a list of items, quantity, unit of measure, threshold and buttons to increase/decrease the amount <br>
  [Manage] - used to register, edit, and delete items <br>
  [Authentication] - User Authentication to prevent data loss when using multiple devices
+ [Search] - All modules with list supports smart search
 
 ## Technology Used
  - Flutter
