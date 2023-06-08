@@ -49,20 +49,12 @@ class _DashboardState extends State<Dashboard> {
             DrawerHeader(
                 decoration: const BoxDecoration(
                     image: DecorationImage(
-                        image: AssetImage("assets/grocery_manager_drawer.jpg"),
+                        image: AssetImage("assets/grocery-manager-drawer.PNG"),
                         fit: BoxFit.fill,
                         alignment: Alignment.center
                     )
                 ),
-                child: Container(
-                  alignment: Alignment.bottomLeft,
-                  child: Text("Grocery Manager",
-                    style: TextStyle(
-                        fontSize: 30.0,
-                        color: Theme.of(context).canvasColor
-                    ),
-                  ),
-                )
+                child: Container()
             ),
             ListTile(
               title: Text(_widgetTitles[0]),

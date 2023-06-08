@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:grocery_manager/services/authentication.dart';
 
 import '../../shared/cardError.dart';
+import '../../shared/sharedBackground.dart';
 import '../../shared/sharedDecoration.dart';
 import '../../shared/sharedLoading.dart';
 
@@ -32,6 +33,7 @@ class _RegisterState extends State<Register> {
       body:
       Stack(
         children: [
+          const Background(),
           Center(
             child: SafeArea(
               child: SingleChildScrollView(

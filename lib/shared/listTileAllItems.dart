@@ -32,8 +32,7 @@ class _AllItemListTileState extends State<AllItemListTile> {
             SlidableAction(
               label: "Update",
               icon: Icons.create_rounded,
-              foregroundColor: Theme.of(context).primaryColor,
-              backgroundColor: Theme.of(context).canvasColor,
+              backgroundColor: Colors.blue,
               onPressed: (val) {
 
                 Navigator.pushNamed(context, Routes.sharedScaffold,
@@ -51,17 +50,12 @@ class _AllItemListTileState extends State<AllItemListTile> {
           ],
         ),
         child: Container(
-          color: Theme.of(context).primaryColor,
+          color: Colors.white,
           child: ListTile(
-            tileColor: Theme.of(context).primaryColor,
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(5),
             ),
-            title: Text(widget.itemModel.name,
-              style: TextStyle(
-                  color: Theme.of(context).canvasColor
-              ),
-            ),
+            title: Text(widget.itemModel.name,),
             trailing: IconButton(
               onPressed: () async {
 
@@ -72,9 +66,7 @@ class _AllItemListTileState extends State<AllItemListTile> {
 
                 await DatabaseService(path: Paths.items).updateEntry(data, widget.id);
               },
-              icon: Icon(Icons.add,
-                color: Theme.of(context).canvasColor,
-              ),
+              icon: const Icon(Icons.add,),
             ),
             leading: IconButton(
                 onPressed: () async {
@@ -86,15 +78,10 @@ class _AllItemListTileState extends State<AllItemListTile> {
                     await DatabaseService(path: Paths.items).updateEntry(data, widget.id);
                   }
                 },
-                icon: Icon(Icons.remove,
-                  color: Theme.of(context).canvasColor,
-                )
+                icon: const Icon(Icons.remove,)
             ),
             subtitle: Text("Remaining: ${widget.itemModel.amount.toString()} ${widget.itemModel.uom}/Threshold: ${widget.itemModel.threshold.toString()} ${widget.itemModel.uom}",
               textAlign: TextAlign.end,
-              style: TextStyle(
-                  color: Theme.of(context).canvasColor
-              ),
             ),
           ),
         ),

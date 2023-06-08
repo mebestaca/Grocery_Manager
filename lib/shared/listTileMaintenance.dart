@@ -33,8 +33,7 @@ class _MaintenanceListTileState extends State<MaintenanceListTile> {
             SlidableAction(
               label: "Update",
               icon: Icons.create_rounded,
-              foregroundColor: Theme.of(context).primaryColor,
-              backgroundColor: Theme.of(context).canvasColor,
+              backgroundColor: Colors.blue,
               onPressed: (val) {
 
                 Navigator.pushNamed(context, Routes.sharedScaffold,
@@ -52,8 +51,7 @@ class _MaintenanceListTileState extends State<MaintenanceListTile> {
             SlidableAction(
                 label: "Delete",
                 icon: Icons.delete,
-                backgroundColor: Theme.of(context).canvasColor,
-                foregroundColor: Theme.of(context).primaryColor,
+                backgroundColor: Colors.red,
                 onPressed: (val) async {
                   await DatabaseService(path: Paths.items).deleteEntry(widget.id);
                 }
@@ -61,22 +59,15 @@ class _MaintenanceListTileState extends State<MaintenanceListTile> {
           ],
         ),
         child: Container(
-          color: Theme.of(context).primaryColor,
+          color: Colors.white,
           child: ListTile(
-            tileColor: Theme.of(context).primaryColor,
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(5),
             ),
             title: Text(widget.itemModel.name,
-              style: TextStyle(
-                  color: Theme.of(context).canvasColor
-              ),
             ),
             subtitle: Text("Remaining: ${widget.itemModel.amount.toString()} ${widget.itemModel.uom}/Threshold: ${widget.itemModel.threshold.toString()} ${widget.itemModel.uom}",
               textAlign: TextAlign.end,
-              style: TextStyle(
-                  color: Theme.of(context).canvasColor
-              ),
             ),
           ),
         ),

@@ -32,8 +32,7 @@ class _ShoppingListTileState extends State<ShoppingListTile> {
             SlidableAction(
               label: "Update",
               icon: Icons.create_rounded,
-              foregroundColor: Theme.of(context).primaryColor,
-              backgroundColor: Theme.of(context).canvasColor,
+              backgroundColor: Colors.blue,
               onPressed: (val) {
 
                 Navigator.pushNamed(context, Routes.sharedScaffold,
@@ -51,8 +50,7 @@ class _ShoppingListTileState extends State<ShoppingListTile> {
             SlidableAction(
               label: "Dismiss",
               icon: Icons.cancel_presentation,
-              foregroundColor: Theme.of(context).primaryColor,
-              backgroundColor: Theme.of(context).canvasColor,
+              backgroundColor: Colors.red,
               onPressed: (val) async {
                 Map<String, dynamic> data = {
                   ItemModel.fieldTag : ""
@@ -64,17 +62,12 @@ class _ShoppingListTileState extends State<ShoppingListTile> {
           ],
         ),
         child: Container(
-          color: Theme.of(context).primaryColor,
+          color: Colors.white,
           child: ListTile(
-            tileColor: Theme.of(context).primaryColor,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(5),
+            shape: const RoundedRectangleBorder(
+              side: BorderSide(width: 1)
             ),
-            title: Text(widget.itemModel.name,
-              style: TextStyle(
-                  color: Theme.of(context).canvasColor
-              ),
-            ),
+            title: Text(widget.itemModel.name,),
             trailing: IconButton(
               onPressed: () async {
 
@@ -84,9 +77,7 @@ class _ShoppingListTileState extends State<ShoppingListTile> {
 
                 await DatabaseService(path: Paths.items).updateEntry(data, widget.id);
               },
-              icon: Icon(Icons.add,
-                color: Theme.of(context).canvasColor,
-              ),
+              icon: const Icon(Icons.add,),
             ),
             leading: IconButton(
                 onPressed: () async {
@@ -97,15 +88,11 @@ class _ShoppingListTileState extends State<ShoppingListTile> {
                     await DatabaseService(path: Paths.items).updateEntry(data, widget.id);
                   }
                 },
-                icon: Icon(Icons.remove,
-                  color: Theme.of(context).canvasColor,
-                )
+                icon: const Icon(Icons.remove,)
             ),
             subtitle: Text("Remaining: ${widget.itemModel.amount.toString()} ${widget.itemModel.uom}/Threshold: ${widget.itemModel.threshold.toString()} ${widget.itemModel.uom}",
               textAlign: TextAlign.end,
-              style: TextStyle(
-                  color: Theme.of(context).canvasColor
-              ),
+
             ),
           ),
         ),

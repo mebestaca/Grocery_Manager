@@ -32,8 +32,7 @@ class _AddMoreItemListTileState extends State<AddMoreItemListTile> {
             SlidableAction(
               label: "Update",
               icon: Icons.create_rounded,
-              foregroundColor: Theme.of(context).primaryColor,
-              backgroundColor: Theme.of(context).canvasColor,
+              backgroundColor: Colors.blue,
               onPressed: (val) {
 
                 Navigator.pushNamed(context, Routes.sharedScaffold,
@@ -51,17 +50,12 @@ class _AddMoreItemListTileState extends State<AddMoreItemListTile> {
           ],
         ),
         child: Container(
-          color: Theme.of(context).primaryColor,
+          color: Colors.white,
           child: ListTile(
-            tileColor: Theme.of(context).primaryColor,
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(5),
             ),
-            title: Text(widget.itemModel.name,
-              style: TextStyle(
-                  color: Theme.of(context).canvasColor
-              ),
-            ),
+            title: Text(widget.itemModel.name,),
 
             trailing: IconButton(
               onPressed: () async {
@@ -71,15 +65,10 @@ class _AddMoreItemListTileState extends State<AddMoreItemListTile> {
 
                 await DatabaseService(path: Paths.items).updateEntry(data, widget.id);
               },
-              icon: Icon(widget.itemModel.tag == ItemModel.tagLow ? Icons.cancel_outlined : Icons.add_circle_outline,
-                color: Theme.of(context).canvasColor,
-              ),
+              icon: Icon(widget.itemModel.tag == ItemModel.tagLow ? Icons.cancel_outlined : Icons.add_circle_outline,),
             ),
             subtitle: Text("Remaining: ${widget.itemModel.amount.toString()} ${widget.itemModel.uom}/Threshold: ${widget.itemModel.threshold.toString()} ${widget.itemModel.uom}",
               textAlign: TextAlign.end,
-              style: TextStyle(
-                  color: Theme.of(context).canvasColor
-              ),
             ),
           ),
         ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:grocery_manager/shared/sharedBackground.dart';
 
 class SharedScaffold extends StatefulWidget {
   const SharedScaffold({Key? key}) : super(key: key);
@@ -34,7 +35,12 @@ class _SharedScaffoldState extends State<SharedScaffold> {
       appBar: AppBar(
         title: Text(_title),
       ),
-      body: _widgetBody,
+      body: Stack(
+        children: [
+          const Background(),
+          _widgetBody,
+        ],
+      ),
     );
   }
 }
