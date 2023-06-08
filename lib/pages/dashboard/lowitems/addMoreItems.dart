@@ -8,6 +8,7 @@ import '../../../constants/paths.dart';
 import '../../../constants/routes.dart';
 import '../../../models/item.dart';
 import '../../../services/database.dart';
+import '../../../shared/sharedBackground.dart';
 import '../../../shared/sharedDecoration.dart';
 import '../../../shared/sharedLoading.dart';
 import '../maintenance/registeritem.dart';
@@ -30,80 +31,85 @@ class _AddMoreItemsState extends State<AddMoreItems> {
   Widget build(BuildContext context) {
 
     return Scaffold(
-      body: Column(
+      body: Stack(
         children: [
-          Container(
-            color: Theme.of(context).canvasColor,
-            child: Form(
-              key: _globalKey,
-              child: Padding(
-                padding: const EdgeInsets.all(10.0),
-                child: TextFormField(
-                  controller: _nameController,
-                  decoration: fieldStyle.copyWith(
-                      hintText: "search",
-                      labelText: "search",
-                      suffixIcon: IconButton(
-                          onPressed: () {
-                            setState(() {
-                              _itemName = "";
-                              _nameController.clear();
-                            });
-                          },
-                          icon: _itemName.isNotEmpty ? const Icon(Icons.cancel_outlined) : Container()
-                      )
+          const Background(),
+          Column(
+            children: [
+              Container(
+                color: Theme.of(context).canvasColor,
+                child: Form(
+                  key: _globalKey,
+                  child: Padding(
+                    padding: const EdgeInsets.all(10.0),
+                    child: TextFormField(
+                      controller: _nameController,
+                      decoration: fieldStyle.copyWith(
+                          hintText: "search",
+                          labelText: "search",
+                          suffixIcon: IconButton(
+                              onPressed: () {
+                                setState(() {
+                                  _itemName = "";
+                                  _nameController.clear();
+                                });
+                              },
+                              icon: _itemName.isNotEmpty ? const Icon(Icons.cancel_outlined) : Container()
+                          )
+                      ),
+                      onChanged: (val) {
+                        setState(() {
+                          _itemName = val;
+                        });
+                      },
+                    ),
                   ),
-                  onChanged: (val) {
-                    setState(() {
-                      _itemName = val;
-                    });
-                  },
                 ),
               ),
-            ),
-          ),
-          Flexible(
-            child: StreamBuilder<QuerySnapshot<ItemModel>>(
-                stream: DatabaseService(path: Paths.items).getItemModelReference().
-                queryBy(ItemQueryModes.itemName, queryText: _itemName).snapshots(),
-                builder: (context, itemList) {
-                  if (itemList.hasData) {
+              Flexible(
+                child: StreamBuilder<QuerySnapshot<ItemModel>>(
+                    stream: DatabaseService(path: Paths.items).getItemModelReference().
+                    queryBy(ItemQueryModes.itemName, queryText: _itemName).snapshots(),
+                    builder: (context, itemList) {
+                      if (itemList.hasData) {
 
-                    final data = itemList.requireData;
+                        final data = itemList.requireData;
 
-                    if (data.size > 0) {
-                      return ListView.builder(
-                          scrollDirection: Axis.vertical,
-                          shrinkWrap: true,
-                          itemCount: data.size,
-                          itemBuilder: (context, index) {
-                            return AddMoreItemListTile(
-                              itemModel: ItemModel(
-                                name: data.docs[index][ItemModel.fieldName],
-                                amount: data.docs[index][ItemModel.fieldAmount],
-                                threshold: data.docs[index][ItemModel.fieldThreshold],
-                                uom: data.docs[index][ItemModel.fieldUOM],
-                                tag: data.docs[index][ItemModel.fieldTag],
-                              ),
-                              id: data.docs[index].id,
-                            );
-                          }
-                      );
-                    }
-                    else{
-                      return const Center(
-                        child: Text("No Items Found",
-                            style: TextStyle(
-                                color: Colors.white
-                            )
-                        ),
-                      );
-                    }
-                  }
-                  else{
-                    return const Center(child: Loading());
-                  }
-                }),
+                        if (data.size > 0) {
+                          return ListView.builder(
+                              scrollDirection: Axis.vertical,
+                              shrinkWrap: true,
+                              itemCount: data.size,
+                              itemBuilder: (context, index) {
+                                return AddMoreItemListTile(
+                                  itemModel: ItemModel(
+                                    name: data.docs[index][ItemModel.fieldName],
+                                    amount: data.docs[index][ItemModel.fieldAmount],
+                                    threshold: data.docs[index][ItemModel.fieldThreshold],
+                                    uom: data.docs[index][ItemModel.fieldUOM],
+                                    tag: data.docs[index][ItemModel.fieldTag],
+                                  ),
+                                  id: data.docs[index].id,
+                                );
+                              }
+                          );
+                        }
+                        else{
+                          return const Center(
+                            child: Text("No Items Found",
+                                style: TextStyle(
+                                    color: Colors.white
+                                )
+                            ),
+                          );
+                        }
+                      }
+                      else{
+                        return const Center(child: Loading());
+                      }
+                    }),
+              ),
+            ],
           ),
         ],
       ),
