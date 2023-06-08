@@ -14,5 +14,5 @@ A Flutter project designed to track inventory in a household to prevent users fr
  - Firebase Firestore
 
 ## Screenshots
-![alt text](https://github.com/mebestaca/grocery_manager/blob/master/screenshots/login_auth.png?raw=true)
-![alt text](https://github.com/mebestaca/grocery_manager/blob/master/screenshots/the%20rest.png?raw=true)
+![alt text](https://github.com/mebestaca/grocery_manager/blob/master/screenshots/grocery-manager-1.png?raw=true)
+![alt text](https://github.com/mebestaca/grocery_manager/blob/master/screenshots/grocery-manager-2.png?raw=true)
