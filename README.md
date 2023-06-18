@@ -1,6 +1,6 @@
 # Grocery Manager
 ## Description:
-A Flutter project designed to track inventory in a household to prevent users from buying duplicate items.
+A Flutter project designed to provide a grocery list and a way to track inventory in a household to prevent users from buying duplicate items.
 
 ## Features
  [Shopping List] - contains items which are out of stock or low. Will automatically add items which are low based on threshold. Users can add items manually <br>
